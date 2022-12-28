@@ -155,39 +155,39 @@ class DbusShelly3emService:
 
        #send data to DBus
        if meter_type == 'PVINVERTER':
-        self._dbusservice['/Ac/Power'] = (meter_data['total_power']*-1)
-        self._dbusservice['/Ac/L1/Power'] = (meter_data['emeters'][0]['power']*-1)
-        self._dbusservice['/Ac/L2/Power'] = (meter_data['emeters'][1]['power']*-1)
-        self._dbusservice['/Ac/L3/Power'] = (meter_data['emeters'][2]['power']*-1)
-       
-        self._dbusservice['/Ac/L1/Energy/Forward'] = (meter_data['emeters'][0]['total_returned']/1000)
-        self._dbusservice['/Ac/L2/Energy/Forward'] = (meter_data['emeters'][1]['total_returned']/1000)
-        self._dbusservice['/Ac/L3/Energy/Forward'] = (meter_data['emeters'][2]['total_returned']/1000)
+        self._dbusservice['/Ac/Power'] = meter_data['total_power']
+        self._dbusservice['/Ac/L1/Power'] = meter_data['emeters'][2]['power']
+        self._dbusservice['/Ac/L2/Power'] = meter_data['emeters'][0]['power']
+        self._dbusservice['/Ac/L3/Power'] = meter_data['emeters'][1]['power']
+		
+        self._dbusservice['/Ac/L1/Energy/Forward'] = (meter_data['emeters'][2]['total']/1000)
+        self._dbusservice['/Ac/L2/Energy/Forward'] = (meter_data['emeters'][0]['total']/1000)
+        self._dbusservice['/Ac/L3/Energy/Forward'] = (meter_data['emeters'][1]['total']/1000)
         
         self._dbusservice['/Ac/Energy/Forward'] = self._dbusservice['/Ac/L1/Energy/Forward'] + self._dbusservice['/Ac/L2/Energy/Forward'] + self._dbusservice['/Ac/L3/Energy/Forward']
 
        else:
         self._dbusservice['/Ac/Power'] = meter_data['total_power']
-        self._dbusservice['/Ac/L1/Power'] = meter_data['emeters'][0]['power']
-        self._dbusservice['/Ac/L2/Power'] = meter_data['emeters'][1]['power']
-        self._dbusservice['/Ac/L3/Power'] = meter_data['emeters'][2]['power']
-        self._dbusservice['/Ac/L1/Energy/Forward'] = (meter_data['emeters'][0]['total']/1000)
-        self._dbusservice['/Ac/L2/Energy/Forward'] = (meter_data['emeters'][1]['total']/1000)
-        self._dbusservice['/Ac/L3/Energy/Forward'] = (meter_data['emeters'][2]['total']/1000)
-        self._dbusservice['/Ac/L1/Energy/Reverse'] = (meter_data['emeters'][0]['total_returned']/1000)
-        self._dbusservice['/Ac/L2/Energy/Reverse'] = (meter_data['emeters'][1]['total_returned']/1000)
-        self._dbusservice['/Ac/L3/Energy/Reverse'] = (meter_data['emeters'][2]['total_returned']/1000)
+        self._dbusservice['/Ac/L1/Power'] = meter_data['emeters'][2]['power']
+        self._dbusservice['/Ac/L2/Power'] = meter_data['emeters'][0]['power']
+        self._dbusservice['/Ac/L3/Power'] = meter_data['emeters'][1]['power']
+        self._dbusservice['/Ac/L1/Energy/Forward'] = (meter_data['emeters'][2]['total']/1000)
+        self._dbusservice['/Ac/L2/Energy/Forward'] = (meter_data['emeters'][0]['total']/1000)
+        self._dbusservice['/Ac/L3/Energy/Forward'] = (meter_data['emeters'][1]['total']/1000)
+        self._dbusservice['/Ac/L1/Energy/Reverse'] = (meter_data['emeters'][2]['total_returned']/1000)
+        self._dbusservice['/Ac/L2/Energy/Reverse'] = (meter_data['emeters'][0]['total_returned']/1000)
+        self._dbusservice['/Ac/L3/Energy/Reverse'] = (meter_data['emeters'][1]['total_returned']/1000)
 
         self._dbusservice['/Ac/Energy/Forward'] = self._dbusservice['/Ac/L1/Energy/Forward'] + self._dbusservice['/Ac/L2/Energy/Forward'] + self._dbusservice['/Ac/L3/Energy/Forward']
         self._dbusservice['/Ac/Energy/Reverse'] = self._dbusservice['/Ac/L1/Energy/Reverse'] + self._dbusservice['/Ac/L2/Energy/Reverse'] + self._dbusservice['/Ac/L3/Energy/Reverse']
 
        # Standard values for GRID and PVINVERTER
-       self._dbusservice['/Ac/L1/Voltage'] = meter_data['emeters'][0]['voltage']
-       self._dbusservice['/Ac/L2/Voltage'] = meter_data['emeters'][1]['voltage']
-       self._dbusservice['/Ac/L3/Voltage'] = meter_data['emeters'][2]['voltage']
-       self._dbusservice['/Ac/L1/Current'] = meter_data['emeters'][0]['current']
-       self._dbusservice['/Ac/L2/Current'] = meter_data['emeters'][1]['current']
-       self._dbusservice['/Ac/L3/Current'] = meter_data['emeters'][2]['current']
+       self._dbusservice['/Ac/L1/Voltage'] = meter_data['emeters'][2]['voltage']
+       self._dbusservice['/Ac/L2/Voltage'] = meter_data['emeters'][0]['voltage']
+       self._dbusservice['/Ac/L3/Voltage'] = meter_data['emeters'][1]['voltage']
+       self._dbusservice['/Ac/L1/Current'] = meter_data['emeters'][2]['current']
+       self._dbusservice['/Ac/L2/Current'] = meter_data['emeters'][0]['current']
+       self._dbusservice['/Ac/L3/Current'] = meter_data['emeters'][1]['current']
              
        #logging
        logging.debug("House Consumption (/Ac/Power): %s" % (self._dbusservice['/Ac/Power']))
