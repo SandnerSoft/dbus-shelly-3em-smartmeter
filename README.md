@@ -57,17 +57,17 @@ After that call the install.sh script.
 
 The following script should do everything for you:
 ```
-wget https://github.com/SandnerSoft/dbus-shelly-3em-smartmeter/archive/refs/heads/main.zip
+wget https://github.com/Halmand/dbus-shelly-3em-smartmeter/archive/refs/heads/main.zip
 unzip main.zip "dbus-shelly-3em-smartmeter-main/*" -d /data
-mv /data/dbus-shelly-3em-smartmeter-main /data/dbus-shelly-3em-smartmeter
-chmod a+x /data/dbus-shelly-3em-smartmeter/install.sh
-/data/dbus-shelly-3em-smartmeter/install.sh
+mv /data/dbus-shelly-3em-smartmeter-main /data/dbus-shelly-3em-smartmeterPV
+chmod a+x /data/dbus-shelly-3em-smartmeterPV/install.sh
+/data/dbus-shelly-3em-smartmeterPV/install.sh
 rm main.zip
 ```
 ⚠️ Check configuration after that - because service is already installed an running and with wrong connection data (host, username, pwd) you will spam the log-file
 
 ### Change config.ini
-Within the project there is a file `/data/dbus-shelly-3em-smartmeter/config.ini` - just change the values - most important is the host, username and password in section "ONPREMISE". More details below:
+Within the project there is a file `/data/dbus-shelly-3em-smartmeterPV/config.ini` - just change the values - most important is the host, username and password in section "ONPREMISE". More details below:
 
 | Section  | Config vlaue | Explanation |
 | ------------- | ------------- | ------------- |
