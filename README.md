@@ -5,6 +5,8 @@ Integrate secound Shelly 3EM smart meter into [Victron Energies Venus OS](https:
 With the scripts in this repo it should be easy possible to install, uninstall, restart a service that connects the Shelly 3EM to the VenusOS and GX devices from Victron.
 Idea is pasend on @RalfZim project linked below.
 
+https://youtu.be/ki9uB-DL8lA
+
 
 
 ## Inspiration
